@@ -3,33 +3,35 @@
   "version": "1.0.0",
   "description": "Chigai: modern visual regression testing. A mock server module for internal tests only.",
   "main": "./app/main.js",
-  "author": "Martin Krause",
+  "engines" : { "node" : ">=8.5.5", "yarn":"latest" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/martinkr/chigai-mock-server"
+  },
+  "homepage": "https://github.com/martinkr/chigai-mock-server",
+  "issues": "https://github.com/martinkr/chigai-mock-server/issues",
+  "author": "Martin Krause <github@mkrause.info> (http://martinkr.github.io)",
   "license": "MIT",
   "scripts": {
+    "eslint": "./node_modules/.bin/eslint ./app/**/*.js",
     "start": "node ./app/main.js",
     "develop": "nodemon ./app/main.js",
     "mocha": "./node_modules/mocha/bin/mocha",
     "nyc": "./node_modules/.bin/nyc --clean ./node_modules/.bin/mocha",
     "coverage": "./node_modules/.bin/nyc check-coverage --lines 100 --functions 100 --branches 100 --statements 100",
     "report": "./node_modules/.bin/nyc report --reporter=lcov --reporter=html",
-    "test": "yarn nyc && yarn report && yarn coverage"
+    "test": "yarn eslint && yarn nyc && yarn report && yarn coverage"
   },
   "dependencies": {
-    "koa": "*",
-    "koa-route": "^3.2.0",
-    "supertest": "^3.0.0"
+    "koa": "^2.3.0",
+    "koa-route": "^3.2.0"
   },
   "devDependencies": {
     "chai": "4.1.1",
-    "chai-as-promised": "^7.1.1",
     "eslint": "4.4.1",
-    "istanbul": "0.4.5",
-    "jsdoc": "^3.5.4",
-    "loke-jsdoc-theme": "^2.1.0",
     "mocha": "3.5.0",
     "nodemon": "^1.12.1",
     "nyc": "^11.2.1",
-    "sinon": "^4.0.0",
-    "sinon-chai": "^2.13.0"
+    "supertest": "^3.0.0"
   }
 }
